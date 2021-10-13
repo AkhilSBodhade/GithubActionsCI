@@ -22,7 +22,8 @@ jobs:
 
 #      - name: Run Unit Tests
 #        run: ./gradlew test
-
+      - name: Change wrapper permissions
+        run: chmod +x ./gradlew
       - name: Build Project
         run: ./gradlew assemble
 
