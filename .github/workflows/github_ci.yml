@@ -1,4 +1,4 @@
-name: Android Pull Request & Master CI
+name: Android CI
 
 on:
   pull_request:
@@ -13,22 +13,20 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout the code
-        uses: actions/checkout@v2
+       - uses: actions/checkout@v1
 
-          - name: Set up JDK 1.8
+          - name: Set up JDK
             uses: actions/setup-java@v1
             with:
               java-version: 1.8
 
-                - name: Build the app
-                  run: ./gradlew assembleDebug
+          - name: Run Unit Tests
+            run: ./gradlew test
 
-                - name: Upload apk
-                  uses: actions/upload-artifact@v2
-                  with:
-                    name: debug apk
-                    path: app/build/outputs/apk/debug/app-debug.apk
+          - name: Build Project
+            run: ./gradlew assemble
+
+
 
 
 
